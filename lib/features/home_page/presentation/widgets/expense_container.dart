@@ -10,9 +10,9 @@ class ExpenseContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle(
-            [fontWeight = FontWeight.normal,
-            fontSize = 15,
-            color = AppPalate.whiteColor]) =>
+            [FontWeight fontWeight = FontWeight.normal,
+            double fontSize = 15,
+            Color color = AppPalate.whiteColor]) =>
         TextStyle(
           color: color,
           fontWeight: fontWeight,
@@ -23,7 +23,7 @@ class ExpenseContainer extends StatelessWidget {
       height: 120,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
           colors: [AppPalate.gradient1, AppPalate.gradient2],
@@ -50,7 +50,7 @@ class ExpenseContainer extends StatelessWidget {
                 Text('₹', style: textStyle(FontWeight.w700, 18.0)),
                 const SizedBox(width: 15),
                 Text(
-                  '$expenseAmount',
+                  expenseAmount,
                   style: textStyle(FontWeight.w900, 20.0),
                 ),
                 const Spacer(),

@@ -1,7 +1,7 @@
 import 'package:expense_tracker/core/theme/app_palatte.dart';
-import 'package:expense_tracker/features/pages/widgets/expense_container.dart';
-import 'package:expense_tracker/features/pages/widgets/expense_list_item.dart';
-import 'package:expense_tracker/features/pages/widgets/view_all_button.dart';
+import 'package:expense_tracker/features/home_page/presentation/widgets/expense_container.dart';
+import 'package:expense_tracker/features/home_page/presentation/widgets/expense_list_item.dart';
+import 'package:expense_tracker/features/home_page/presentation/widgets/view_all_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -40,9 +40,9 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   // The view all button to view all expenses in a new page
-                  ViewAllButton(
-                    onTap: () {},
-                  ),
+                  // ViewAllButton(
+                  //   onTap: () {},
+                  // ),
                 ],
               ),
               Column(
@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.only(top: 10),
                     child: Text(
                       'Today',
                       style: TextStyle(
@@ -60,12 +60,23 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  ExpenseListItem(
-                    onTap: () {},
-                    expenseName: 'Coffee',
-                    expenseAmount: '1500',
-                    expenseDescription: 'Cofee with milk',
-                  )
+                  // The list view builder will be used
+                  ListView.builder(
+                    itemCount: 15,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (contex, i) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 8.0),
+                        child: ExpenseListItem(
+                          onTap: () {},
+                          expenseName: 'Coffee',
+                          expenseAmount: '134',
+                          expenseDescription: 'afleiagn salfnoe dskgalj',
+                        ),
+                      );
+                    },
+                  ),
                 ],
               ),
             ],
