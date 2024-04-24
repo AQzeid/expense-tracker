@@ -1,5 +1,6 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:expense_tracker/core/theme/app_palatte.dart';
+import 'package:expense_tracker/features/home_page/presentation/home_page/home_page.dart';
 import 'package:expense_tracker/features/home_page/presentation/widgets/expense_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -49,7 +50,23 @@ class _AddExpensePageState extends State<AddExpensePage> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: widget.isEditing
+            ? () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );
+              }
+            : () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );
+              },
         backgroundColor: AppPalate.gradient3,
         child: Icon(widget.isEditing ? Icons.check : Icons.add,
             size: 30, color: AppPalate.whiteColor),

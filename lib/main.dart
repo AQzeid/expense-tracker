@@ -1,5 +1,6 @@
 import 'package:expense_tracker/core/theme/theme.dart';
 import 'package:expense_tracker/features/home_page/presentation/add_expense_page.dart/add_expense_page.dart';
+import 'package:expense_tracker/features/home_page/presentation/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Expense Tracker',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.whiteThemeMode,
-      home: const AddExpensePage(),
+      home: const HomePage(),
     );
   }
 }
