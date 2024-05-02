@@ -1,8 +1,10 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:expense_tracker/core/theme/app_palatte.dart';
+import 'package:expense_tracker/features/home_page/presentation/bloc/bloc/expense_bloc.dart';
 import 'package:expense_tracker/features/home_page/presentation/home_page/home_page.dart';
 import 'package:expense_tracker/features/home_page/presentation/widgets/expense_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class AddExpensePage extends StatefulWidget {
@@ -60,12 +62,22 @@ class _AddExpensePageState extends State<AddExpensePage> {
                 );
               }
             : () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const HomePage(),
+                //   ),
+                // );
+                if (formKey.currentState!.validate()) {
+                  context.read<ExpenseBloc>().add(
+                        AddExpenseEvent(
+                          name: nameController.text.trim(),
+                          description: descriptionController.text.trim(),
+                          date: selectedDate,
+                          amount: amountController.text.trim(),
+                        ),
+                      );
+                }
               },
         backgroundColor: AppPalate.gradient3,
         child: Icon(widget.isEditing ? Icons.check : Icons.add,
@@ -102,9 +114,10 @@ class _AddExpensePageState extends State<AddExpensePage> {
                     selectedDayHighlightColor: AppPalate.gradient3,
                   ),
                   onValueChanged: (value) {
-                    String formatedDate = formatter.format(value.first!);
-                    debugPrint(value.first.toString());
-                    debugPrint(formatedDate);
+                    selectedDate = value.first!;
+                    // String formatedDate = formatter.format(value.first!);
+                    // debugPrint(value.first.toString());
+                    // debugPrint(formatedDate);
                   },
                   value: [selectedDate],
                 ),
